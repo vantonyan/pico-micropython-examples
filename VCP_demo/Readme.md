@@ -11,4 +11,4 @@ To use this program:
 5. Use Teraterm on windows machine to open the Virtual Serial Port of Raspberry Pi Pico at baudrate of 115200 bits per second
 
 The teraterm window will show temperature of RP2040 internal sensor every second. Also the onboard LED will fade in and out showing that program is running
-Please note that most of the code is shamelessly copied from other example projects
+Please note that most of the code is shamelessly copied from other example projects. I just got my board this morning and excellent example code and documentation helped me a lot.
