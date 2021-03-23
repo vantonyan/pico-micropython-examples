@@ -8,5 +8,6 @@ The sensor is hooked up to the following pins on Raspberry Pico board:
 
 After connecting the hall effect sensor to Pico board, connect the USB cable and open tachometer.py in Thonny and hit run button.
 
-The shell will display the RPM of rotating object with attached magnet. To test the hardware you can move a magnet on an off the hall sensor. Onboard LED should light up when the magnet is close to hall effect sensor. Notice that the sensor only responds to North pole of the magnet
+The shell will display the RPM of rotating object with attached magnet. To test the hardware you can move a magnet on an off the hall sensor. Onboard LED should light up when the magnet is close to hall effect sensor. Notice that the sensor only responds to South pole of the magnet. 
+This means we can easily detect the south pole of the magnet with this circuit, beause the sensor is not affected by north pole.
 
