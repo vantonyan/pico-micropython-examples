@@ -7,3 +7,4 @@ INA219 SCL -> Pico pin 2 (GP1)
 INA219 SDA -> Pico pin 1 (GP0)
 The code Displays current, voltage and power levels of th sensor board.
 Using this setup one can easily calculate power in consumption and even come up with algorithm to implement MPP (Maximum Power Point)regulation for solar panels etc.
+The INA219 modules are available from Amazon (https://amzn.to/31hzGaH)
