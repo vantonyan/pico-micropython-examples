@@ -24,19 +24,19 @@ class ina219:
         self.shunt = sr
             
     def vshunt(icur):
-        global SHUNT_OHMS
         # Read Shunt register 1, 2 bytes
         reg_bytes = ina_i2c.readfrom_mem(icur.address, icur.REG_SHUNTVOLTAGE, 2)
         reg_value = int.from_bytes(reg_bytes, 'big')
-        print(reg_value)
         if reg_value > 2**15: #negative
+            sign = -1
             for i in range(16): 
                 reg_value = (reg_value ^ (1 << i))
-        print(reg_value)
-        return (float(reg_value) * 1e-4)
-        #return reg_value
+        else:
+            sign = 1
+        return (float(reg_value) * 1e-4 * sign)
         
     def vbus(ivolt):
+        # Read Vbus voltage
         reg_bytes = ina_i2c.readfrom_mem(ivolt.address, ivolt.REG_BUSVOLTAGE, 2)
         reg_value = int.from_bytes(reg_bytes, 'big') >> 3
         return float(reg_value) * 0.004
@@ -59,5 +59,5 @@ while True:
     i = ina.vshunt()
     utime.sleep_ms(10) # Delay to avoid micropython error
     p = i * v
-    print("v = %.2f" % v ,", i = %.2f" % i , ", P = %.2f" % p)
+    print("v = %.3f" % v ,", i = %.3f" % i , ", P = %.2f" % p)
     sleep(1)
