@@ -1,4 +1,4 @@
-This code was tested with reference weight and load cell rated for 1Kg. The . The error reading was below 0.1% of full scale. 
+This code was tested with reference weight and load cell rated for 1Kg. The . The error reading was below 0.1% of full scale (lerss than 1g). We used the kit (https://amzn.to/3w6VKDc) from amazon that includes HX711 module and 1Kg load cell for testing the code.
 
 HX711 board connections to Raspberry Pie Pico:
 
