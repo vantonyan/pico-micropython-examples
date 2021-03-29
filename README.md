@@ -1,4 +1,4 @@
-# MicroPython Practical Examples
+# MicroPython Practical Examples Using Raspberry Pie Pico board
 
 Those are examples of implementation using various sensor modules
 
