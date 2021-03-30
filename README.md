@@ -12,7 +12,7 @@ Those are examples of implementation using various sensor modules
 
 **VCP_demo**: Example code showing use of threads and how to build stand alone applications 
 
-**Accelerometer**: Using 6050 module to create accelerometer and gyroscope
+**Accelerometer**: Using MPU-6050 GY-521 module to create accelerometer and gyroscope
 
 ### Contributions
 
