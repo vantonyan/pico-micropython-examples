@@ -10,7 +10,7 @@ Those are examples of implementation using various sensor modules
 
 **Tachometer**: Test code for tachometer based on hall effect sensor and magnet. Measures up to 3000 RPM
 
-**VCP_demo**: Example code showing use of threads and build stand alone applications 
+**VCP_demo**: Example code showing use of threads and how to build stand alone applications 
 
 **Accelerometer**: Using 6050 module to create accelerometer and gyroscope
 
