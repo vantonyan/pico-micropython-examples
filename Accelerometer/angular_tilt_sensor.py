@@ -61,8 +61,8 @@ class MPU6050:
         # Wake up the part
         MPU6050_i2c.writeto_mem(conf.address, conf.PWR_MGMT_1, b'\x00')
         MPU6050_i2c.writeto_mem(conf.address, conf.ACCEL_CONFIG, b'\x00')
-        MPU6050_i2c.writeto_mem(conf.address, conf.GYRO_CONFIG, b'\x08')
-
+        MPU6050_i2c.writeto_mem(conf.address, conf.GYRO_CONFIG, b'\x00')
+        
     def twoes_int(self,reg_value):
         sign = 1
         if reg_value > 2**15: # negative current direction
@@ -98,19 +98,20 @@ class MPU6050:
         else:
             print("Unkown range - accel_scale_modifier set to self.ACCEL_SCALE_MODIFIER_2G")
             accel_scale_modifier = self.ACCEL_SCALE_MODIFIER_2G
-
  
         x = x / accel_scale_modifier
         y = y / accel_scale_modifier
         z = z / accel_scale_modifier
 
-        if g is True:
-            return {'x': x, 'y': y, 'z': z}
-        elif g is False:
-            x = x * self.GRAVITIY_MS2
-            y = y * self.GRAVITIY_MS2
-            z = z * self.GRAVITIY_MS2
-        return {'x': x, 'y': y, 'z': z}
+        
+        x = x * self.GRAVITIY_MS2
+        y = y * self.GRAVITIY_MS2
+        z = z * self.GRAVITIY_MS2
+        
+        # Calculate angle and convert to degrees
+        ax = math.atan2(x,z)*180/3.14
+        ay = math.atan2(y,z)*180/3.14
+        return {'ax': ax, "ay": ay}
 
 
     def get_gyro_data(self):
@@ -145,14 +146,14 @@ class MPU6050:
         z = z / gyro_scale_modifier
 
         return {'x': x, 'y': y, 'z': z}
+        
 
         
 # Create current measuring object
 GYRO = MPU6050(104)
 GYRO.configure()
-#utime.sleep_ms(10)
+utime.sleep_ms(10)
 
 while True:
     print(GYRO.get_accel_data())
-    #print(GYRO.get_gyro_data())
     utime.sleep_ms(500)
