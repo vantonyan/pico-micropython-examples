@@ -8,3 +8,4 @@ GY-521 Module connections to Raspberry Pie Pico board:
 - SCL --> Pico pin 2 (GP1)
 - SDA --> Pico pin 1 (GP0)
 
+Use angular_tilt_sensor.py for exempe on how to use this part as a tilt sensor. This code could be used as basis for self balansing robots or structures
