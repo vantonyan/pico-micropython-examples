@@ -32,10 +32,10 @@ class HCSR04:
         pulse_time = machine.time_pulse_us(self.echo, 1, self.echo_timeout_us)
         # print(pulse_time)
         if pulse_time == -1:
-            print("Timeout: pulse is longer than limit")
+            print("Timeout: Echo pulse is longer than limit")
             return 0
         elif pulse_time == -2:
-            print("Timeout on waiting for a pulse")           
+            print("Timeout on waiting for a echo")           
             print(self.echo_timeout_us)
             return 0
         
@@ -48,7 +48,9 @@ class HCSR04:
         return math.ceil(0.34320 * (pulse_time/2)) + self.offset
         
 
-rfinder = HCSR04(1, 0, 500, 17)
+# Set Trigger pin GP1, Echo pin GP0, Max distance 400mm and offset 17 mm
+# Max distance should be greater than 400mm for unknown reason
+rfinder = HCSR04(1, 0, 400, 17)
 while True:
     dist = rfinder.get_distance_mm()
     #print("Distance %d" % dist)
